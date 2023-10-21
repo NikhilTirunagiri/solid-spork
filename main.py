@@ -83,5 +83,5 @@ class Encoder(nn.Module):
         self.device = device
         self.word_embedding = nn.Embedding(src_vocab_size, embed_size)
         self.position_embedding = nn.Embedding(max_length, embed_size)
-        
+        #
 
