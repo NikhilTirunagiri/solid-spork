@@ -158,3 +158,30 @@ class  Decoder(nn.Module):
             x = layer(x,enc_out, enc_out, src_mask, trg_mask)
 
         out = self.fc_out(x)
+
+class Transformer(nn.Module):
+    def __init__(
+            self,
+            src_vocab_size,
+            trg_vocab_size,
+            src_pad_idx,
+            embed_size = 256,
+            num_layers = 6,
+            forward_expansion = 4,
+            heads = 8,
+            dropout=0,
+            device='cuda',
+            max_length=100
+    ):
+        super(Transformer, self).__init__()
+
+        self.encoder = Encoder(
+            src_vocab_size,
+            embed_size,
+            num_layers,
+            heads,
+            device,
+            forward_expansion,
+            dropout,
+            max_length
+        )
